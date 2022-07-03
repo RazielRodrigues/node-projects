@@ -25,7 +25,7 @@ db.sequelize.sync().then(() => { console.log('Database up'); }).catch((err) => {
 
 // Criando rota de teste
 app.get('/', (req, res) => {
-    res.json({ messsage: 'SOME APP' });
+    res.json({ messsage: 'KENGA DO MORENO>' });
 });
 
 const PORT = process.env.PORT || 8080;

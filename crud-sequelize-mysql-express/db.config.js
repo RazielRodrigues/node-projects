@@ -1,8 +1,8 @@
 module.exports = {
     HOST: 'localhost',
     PORT: 8081,
-    USERNAME: 'admin',
-    PASSWORD: 'password',
+    USERNAME: 'root',
+    PASSWORD: 'root',
     DB: 'project_one',
     DIALECT: 'mysql',
 }
