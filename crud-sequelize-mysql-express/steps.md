@@ -23,3 +23,9 @@ DELETE	    api/tutorials/:id	        remove Tutorial by id
 DELETE	    api/tutorials	            remove all Tutorials
 GET	        api/tutorials/published	    find all published Tutorials
 GET	        api/tutorials?title=[kw]	find all Tutorials which title contains 'kw'
+
+## TODO:
+    - MODEL USUARIO
+    - MODEL ENDEREÇO
+    - CLIENTE
+    - 

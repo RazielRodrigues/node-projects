@@ -24,8 +24,27 @@ const db = require('./app/models/index');
 db.sequelize.sync().then(() => { console.log('Database up'); }).catch((err) => { console.log(err); });
 
 // Criando rota de teste
-app.get('/', (req, res) => {
-    res.json({ messsage: 'KENGA DO MORENO>' });
+app.get('/', async (req, res) => {
+
+    const create  = await db.eventos.create({
+        nome: 'TESTE-' + new Date(),
+        descricao: 'app',
+        link: 'www.google.com',
+        createdAt: new Date(),
+        updatedAt: new Date()
+    });
+
+    const read  = await db.eventos.findAll({})
+
+    const update = await db.eventos.update({
+        nome: 'TESTE-' + new Date(),
+        descricao: 'app',
+        link: 'www.google.com',
+        createdAt: new Date(),
+        updatedAt: new Date()
+    });
+
+    res.json({ eventos: eventos });
 });
 
 const PORT = process.env.PORT || 8080;
