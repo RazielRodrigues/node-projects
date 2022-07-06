@@ -15,4 +15,7 @@ server.listen(port, () => {
     console.log('Server on: port 3333');
 })
 
+const db = require('./src/database');
+db.test();
+
 module.exports = server;
