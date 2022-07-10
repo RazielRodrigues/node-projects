@@ -1,7 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const TravelController = require('./../controllers/travel')
 
 router.post("/create", (req, res) => {
+
+    TravelController.create(req, res);
+
     res.send("CREATE")
 })
 
