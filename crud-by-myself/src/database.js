@@ -1,30 +1,32 @@
 const { Sequelize } = require('sequelize');
-class Database{
+const Travel = require('./models/travel');
+const User = require('./models/user');
 
-    async connection(){
-        return new Sequelize('project_two', 'root', 'root', {
+class Database {
+
+    async syncModels(connection) {
+        connection.define('Travel', Travel);
+        connection.define('User', User);
+    }
+
+    async connection() {
+        const connection = new Sequelize('project_two', 'root', 'root', {
             host: 'localhost',
             dialect: 'mysql'
         });
+        
+        await this.syncModels(connection);
+        
+        return connection;
     }
 
-    async create(options){}
+    async create(options) { }
 
-    async read(id, options){}
+    async read(id, options) { }
 
-    async update(id, options){}
+    async update(id, options) { }
 
-    async delete(id){}
-
-    // async test(){
-    //     try {
-    //         const x = await this.connection();
-    //         x.authenticate()
-    //         console.log('Connection has been established successfully.');
-    //     } catch (error) {
-    //         console.error('Unable to connect to the database:', error);
-    //     }
-    // }
+    async delete(id) { }
 
 }
 
