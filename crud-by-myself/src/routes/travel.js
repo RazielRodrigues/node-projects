@@ -11,7 +11,7 @@ router.post("/create", async (req, res) => {
     res.status(201).json(response);
 })
 
-router.get("/read/:id", async (req, res) => {
+router.get("/read", async (req, res) => {
     const response = await TravelController.read(req, res);
 
     if (!response)
@@ -20,7 +20,7 @@ router.get("/read/:id", async (req, res) => {
     res.status(200).json(response);
 })
 
-router.put("/update/:id", async (req, res) => {
+router.put("/update", async (req, res) => {
     const response = await TravelController.update(req, res);
 
     if (!response)
@@ -29,7 +29,7 @@ router.put("/update/:id", async (req, res) => {
     res.status(200).json(response);
 })
 
-router.delete("/delete/:id", async (req, res) => {
+router.delete("/delete", async (req, res) => {
     const response = await TravelController.delete(req, res);
 
     if (!response)

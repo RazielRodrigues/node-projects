@@ -3,7 +3,7 @@ const Travel = require('./models/travel');
 const User = require('./models/user');
 
 const tableConfig = {
-    freezeTableName: true,
+    freezeTableName:true,
     timestamps: false,
 }
 
@@ -19,9 +19,9 @@ class Database {
             host: 'localhost',
             dialect: 'mysql'
         });
-
+        
         await this.syncModels(connection);
-
+        
         return connection;
     }
 
