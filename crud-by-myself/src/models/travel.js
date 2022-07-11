@@ -4,7 +4,7 @@ module.exports = {
     name: {
         type: DataTypes.STRING,
     },
-    decription: {
+    description: {
         type: DataTypes.STRING
     },
     value: {

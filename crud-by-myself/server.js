@@ -8,7 +8,6 @@ server.use(express.json())
 server.use(express.urlencoded())
 
 // Routes
-// TODO: USER ROUTES
 const travelRoutes = require('./src/routes/travel');
 server.use('/travel', travelRoutes);
 

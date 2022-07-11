@@ -2,32 +2,40 @@ const express = require('express');
 const router = express.Router();
 const TravelController = require('./../controllers/travel')
 
-router.post("/create", (req, res) => {
+router.post("/create", async (req, res) => {
+    const response = await TravelController.create(req, res);
 
-    TravelController.create(req, res);
+    if (!response)
+        res.status(500).json(req.original);
 
-    res.send("CREATE")
+    res.status(201).json(response);
 })
 
-router.get("/read", (req, res) => {
-    res.send("READ")
+router.get("/read/:id", async (req, res) => {
+    const response = await TravelController.read(req, res);
+
+    if (!response)
+        res.status(401).json(req.original);
+
+    res.status(200).json(response);
 })
 
-router.put("/update", (req, res) => {
-    res.send("UPDATE")
+router.put("/update/:id", async (req, res) => {
+    const response = await TravelController.update(req, res);
+
+    if (!response)
+        res.status(500).json(req.original);
+
+    res.status(200).json(response);
 })
 
-router.delete("delete", (req, res) => {
-    res.send("DELETE")
-})
+router.delete("/delete/:id", async (req, res) => {
+    const response = await TravelController.delete(req, res);
 
-const download = (req, res, next) => {
-    console.log('Downloading...')
-    next();
-}
+    if (!response)
+        res.status(500).json(req.original);
 
-router.get("/download", download, (req, res) => {
-    res.download(__dirname + './../../public/download/travel.txt')
+    res.status(200).json(response);
 })
 
 module.exports = router;
