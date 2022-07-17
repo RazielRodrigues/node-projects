@@ -1,7 +1,7 @@
 require("dotenv").config()
 const express = require('express');
 const multer = require('multer');
-const nodemailer = require('nodemailer');
+const createTransporter = require("./createTransport")
 
 const app = express();
 const PORT = 3000 || proccess.env.PORT;
@@ -31,50 +31,54 @@ const attachmentUpload = multer({
 
 // Route to handle sending mails
 app.post("/send_email", (req, res) => {
-    attachmentUpload(req, res, function (error) {
+    attachmentUpload(req, res, async function (error) {
         if (error) {
             console.log(err);
             return res.send("Error uploading file");
         } else {
+
             const recipient = req.body.email;
             const subject = req.body.subject;
             const message = req.body.message;
             const attachmentPath = req.file.path;
-            console.log("recipient", recipient);
-            console.log("subject", subject);
-            console.log("message", message);
-            console.log("attachmentPath", attachmentPath);
-
-            let transporter = nodemailer.createTransport({
-                service: "gmail",
-                auth: {
-                    type: "OAuth2",
-                    user: "",
-                    pass: "",
-                    clientId: "",
-                    clientSecret: "",
-                    refreshToken: ""
-                }
-            })
 
             let mailOptions = {
-                from: "",
-                to: "",
-                subject: "",
-                text: ""
+                from: process.env.SENDER_EMAIL,
+                to: recipient,
+                subject: subject,
+                text: message,
+                attachments: [
+                    {
+                        patch: attachmentPath
+                    },
+                ],
             }
 
-            transporter.sendMail(mailOptions, (err, res) => {
-                if (err) {
-                    console.log(err);
-                }
+            try {
+                let emailTransporter = await createTransporter()
 
-                console.log('ok');
-            })
+                emailTransporter.sendMail(mailOptions, (err, res) => {
+                    if (err) {
+                        console.log(err);
+                    }
 
+                    console.log("Email sent: " + info.response);
+
+                    fs.unlink(attachmentPath, function (err) {
+                        if (err) {
+                            return res.end(err);
+                        } else {
+                            console.log(attachmentPath + " has been deleted");
+                            return res.redirect("/success.html");
+                        }
+                    });
+
+                })
+
+            } catch (error) {
+                return console.log(error);
+            }
 
         }
     });
 });
-
-console.log(process.env.OK)
