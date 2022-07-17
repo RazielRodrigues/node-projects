@@ -55,24 +55,13 @@ app.post("/send_email", (req, res) => {
             }
 
             try {
+
                 let emailTransporter = await createTransporter()
+                emailTransporter.sendMail(mailOptions, function (err) { if (err) console.log(err); })
 
-                emailTransporter.sendMail(mailOptions, (err, res) => {
-                    if (err) {
-                        console.log(err);
-                    }
+                fs.unlink(attachmentPath, function (err, res) { });
 
-                    fs.unlink(attachmentPath, function (err) {
-                        if (err) {
-                            return res.end(err);
-                        } else {
-                            console.log(attachmentPath + " has been deleted");
-                            return res.redirect("/success.html");
-                        }
-                    });
-                    return res.redirect("/success.html");
-
-                })
+                return res.redirect("/success.html");
 
             } catch (error) {
                 return console.log(error);
