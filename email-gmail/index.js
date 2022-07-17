@@ -2,7 +2,7 @@ require("dotenv").config()
 const express = require('express');
 const multer = require('multer');
 const createTransporter = require("./createTransport")
-
+const fs = require('fs');
 const app = express();
 const PORT = 3000 || proccess.env.PORT;
 
@@ -62,8 +62,6 @@ app.post("/send_email", (req, res) => {
                         console.log(err);
                     }
 
-                    console.log("Email sent: " + info.response);
-
                     fs.unlink(attachmentPath, function (err) {
                         if (err) {
                             return res.end(err);
@@ -72,6 +70,7 @@ app.post("/send_email", (req, res) => {
                             return res.redirect("/success.html");
                         }
                     });
+                    return res.redirect("/success.html");
 
                 })
 
