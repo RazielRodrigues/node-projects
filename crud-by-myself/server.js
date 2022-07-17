@@ -9,31 +9,12 @@ server.use(express.urlencoded())
 server.set('view engine', 'ejs');
 server.set('views', './src/views');
 
-//TODO: ADJUST
-server.get('/', function(req, res){
- 
-    var pessoas = [
-        {
-            'nome': 'Paulo',
-            'idade': 12
-        },
-        {
-            'nome': 'Jõao',
-            'idade': 15,
-        },
-        {
-            'nome': 'Marina',
-            'idade': 25,
-        },
-    ]
-
-    // Rendering home.ejs page
-    res.render('index', {pessoas: pessoas});
-})
-
 // Routes
 const travelRoutes = require('./src/routes/travel');
+const appRoutes = require('./src/routes/app');
+
 server.use('/travel', travelRoutes);
+server.use('/', appRoutes);
 
 server.listen(port, () => {
     console.log('Server on: port 3333');

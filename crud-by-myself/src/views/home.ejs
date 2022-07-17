@@ -1,12 +1,25 @@
-<ul>
-    <% for(var i=0; i<pessoas.length; i++) {%>
-    <li>
-        Nome: <%= pessoas[i].nome %>
-    </li>
-    <li>
-        Idade: <%= pessoas[i].idade %>
-        <br>
-        <br>
-    </li>
-    <% } %>
-</ul>>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Value</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% travels.forEach(function(travel, key){ %>
+        <tr>
+            <th scope="row"><%=travel.id %> </th>
+            <td><%=travel.name %> </td>
+            <td><%=travel.description %> </td>
+            <td><%=travel.value %> </td>
+            <td>
+                <a onclick="update('<%=travel.id %>')" class="btn btn-primary">Edit</a>
+                <a onclick="deleteTravel('<%=travel.id %>')" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>
