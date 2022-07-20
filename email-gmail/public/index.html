@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Css styles -->
-  <link rel="stylesheet" href="./index.css" />
+  <link rel="stylesheet" href="./css/index.css" />
   <!-- Fontawesome icon library -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <title>e-Mail Sender Application</title>
@@ -18,7 +18,7 @@
     <div class="input-wrapper">
       <i class="fa fa-user icon"></i>
 
-      <input class="input-field" type="text" placeholder="To: i.e unclebigbay@gmail.com" name="email" autocomplete="off"
+      <input class="input-field" type="mail" placeholder="To: i.e mail@example.com" name="email" autocomplete="off"
         required />
     </div>
     <div class="input-wrapper">
@@ -34,7 +34,7 @@
 
     <div class="attachment-wrapper">
       <label for="attachment">Attachment</label>
-      <input id="attachment" name="attachment" type="file" required />
+      <input id="attachment" name="attachment" type="file" />
     </div>
 
     <button type="submit" class="send-btn">Send Mail</button>

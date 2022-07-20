@@ -2,12 +2,12 @@ const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
 const nodemailer = require('nodemailer');
 
-module.exports = createTransporter = async () => {
+const createTransporter = async () => {
 
     const oauth2Client = new OAuth2(
         process.env.GOOGLE_OAUTH_CLIENT_ID,
         process.env.GOOGLE_OAUTH_CLIENT_SECRET,
-        "https://developers.google.com/oauthplayground"
+        process.env.GOOGLE_OAUTH_URL
     );
 
     oauth2Client.setCredentials({
@@ -37,3 +37,5 @@ module.exports = createTransporter = async () => {
 
     return transporter
 }
+
+module.exports = createTransporter;
