@@ -7,6 +7,12 @@ class NinjaController {
         const connection = await Database.connection();
         const NinjaRepository = connection.modelManager.getModel('ninja');
 
+        if (!req.body) {
+            return {
+                message: "Must pass the body!"
+            };
+        }
+
         await NinjaRepository.create(req.body)
 
         return {

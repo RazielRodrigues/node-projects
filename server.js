@@ -10,10 +10,10 @@ server.set('view engine', 'ejs');
 server.set('views', './src/views');
 
 // Routes
-const travelRoutes = require('./src/routes/ninja');
+const ninjaRoutes = require('./src/routes/ninja');
 const appRoutes = require('./src/routes/app');
 
-server.use('/ninja', travelRoutes);
+server.use('/ninja', ninjaRoutes);
 server.use('/', appRoutes);
 
 server.listen(port, () => {

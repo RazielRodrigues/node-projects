@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const NinjaController = require('./../controllers/ninja')
 
-router.post("/create", async (req, res) => {
+router.post("/", async (req, res) => {
     const response = await NinjaController.create(req, res);
 
     if (!response)
@@ -11,7 +11,7 @@ router.post("/create", async (req, res) => {
     res.status(201).json(response);
 })
 
-router.get("/read", async (req, res) => {
+router.get("/", async (req, res) => {
     const response = await NinjaController.read(req, res);
 
     if (!response)
@@ -20,7 +20,7 @@ router.get("/read", async (req, res) => {
     res.status(200).json(response);
 })
 
-router.put("/update", async (req, res) => {
+router.put("/", async (req, res) => {
     const response = await NinjaController.update(req, res);
 
     if (!response)
@@ -29,7 +29,7 @@ router.put("/update", async (req, res) => {
     res.status(200).json(response);
 })
 
-router.delete("/delete", async (req, res) => {
+router.delete("/", async (req, res) => {
     const response = await NinjaController.delete(req, res);
 
     if (!response)

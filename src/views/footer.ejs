@@ -5,28 +5,35 @@
 <script>
 
     function create(data) {
-        // fetch('/ninja/create', { method: 'post' })
-        //     .then(response => response.text())
-        //     .then(texto => alert(texto))
-        //     .catch(err => alert(err.message))
+        fetch('/ninja', { method: 'post' })
+            .then(response => response.text())
+            .then(texto => alert(texto))
+            .catch(err => alert(err.message))
     }
 
     function read(id, data) {
-        // fetch('/ninja/read', { method: 'GET' })
-        //     .then(response => response.text())
-        //     .then(texto => alert(texto))
-        //     .catch(err => alert(err.message))
+        fetch('/ninja', { method: 'GET' })
+            .then(response => response.text())
+            .then(texto => alert(texto))
+            .catch(err => alert(err.message))
+    }
+
+    function readOne(id, data) {
+        fetch('/ninja?id=' + id, { method: 'GET' })
+            .then(response => response.text())
+            .then(texto => alert(texto))
+            .catch(err => alert(err.message))
     }
 
     function update(id, data) {
-        // fetch('/ninja/update', { method: 'PUT' })
-        //     .then(response => response.text())
-        //     .then(texto => alert(texto))
-        //     .catch(err => alert(err.message))
+        fetch('/ninja', { method: 'PUT' })
+            .then(response => response.text())
+            .then(texto => alert(texto))
+            .catch(err => alert(err.message))
     }
 
     function deleteNinja(id) {
-        fetch('/ninja/delete/?id=' + id, { method: 'DELETE' })
+        fetch('/ninja?id=' + id, { method: 'DELETE' })
             .then(response => response.text())
             .then(texto => window.location.reload())
             .catch(err => alert(err.message))
