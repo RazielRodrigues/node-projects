@@ -1,5 +1,6 @@
 const { Sequelize } = require('sequelize');
 const Ninja = require('./models/ninja');
+const Village = require('./models/village');
 
 const tableConfig = {
     freezeTableName:true,
@@ -10,6 +11,7 @@ class Database {
 
     async syncModels(connection) {
         connection.define('ninja', Ninja, tableConfig);
+        connection.define('village', Village, tableConfig);
     }
 
     async connection() {

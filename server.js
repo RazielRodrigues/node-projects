@@ -8,6 +8,7 @@ server.use(express.json())
 server.use(express.urlencoded())
 server.set('view engine', 'ejs');
 server.set('views', './src/views');
+server.use(express.static('./src/views/assets'));
 
 // Routes
 const ninjaRoutes = require('./src/routes/ninja');
