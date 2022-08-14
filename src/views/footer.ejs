@@ -1,0 +1,40 @@
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+
+<script>
+
+    function create(data) {
+        // fetch('/ninja/create', { method: 'post' })
+        //     .then(response => response.text())
+        //     .then(texto => alert(texto))
+        //     .catch(err => alert(err.message))
+    }
+
+    function read(id, data) {
+        // fetch('/ninja/read', { method: 'GET' })
+        //     .then(response => response.text())
+        //     .then(texto => alert(texto))
+        //     .catch(err => alert(err.message))
+    }
+
+    function update(id, data) {
+        // fetch('/ninja/update', { method: 'PUT' })
+        //     .then(response => response.text())
+        //     .then(texto => alert(texto))
+        //     .catch(err => alert(err.message))
+    }
+
+    function deleteNinja(id) {
+        fetch('/ninja/delete/?id=' + id, { method: 'DELETE' })
+            .then(response => response.text())
+            .then(texto => window.location.reload())
+            .catch(err => alert(err.message))
+    }
+
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Jutsu</th>
+            <th scope="col">Value</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% ninjas.forEach(function(ninja, key){ %>
+        <tr>
+            <th scope="row"><%=ninja.id %> </th>
+            <td><%=ninja.name %> </td>
+            <td><%=ninja.jutsu %> </td>
+            <td><%=ninja.value %> </td>
+            <td>
+                <a onclick="update('<%=ninja.id %>')" class="btn btn-primary">Edit</a>
+                <a onclick="deleteninja('<%=ninja.id %>')" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>

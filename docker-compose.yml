@@ -1,0 +1,16 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+
+  ninjasmysql:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: ninjas
+      MYSQL_USER: hokage
+      MYSQL_PASSWORD: hokage123
+      MYSQL_ROOT_PASSWORD: konoha123
+    ports:
+      - 3306:3306
+    volumes:
+      - db:/var/lib/mysql
