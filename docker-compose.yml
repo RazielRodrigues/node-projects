@@ -4,7 +4,8 @@ version: '3.1'
 services:
 
   ninjasmysql:
-    image: mysql
+    container_name: ninjasmysql
+    image: mysql:latest
     environment:
       MYSQL_DATABASE: ninjas
       MYSQL_USER: hokage
@@ -13,4 +14,4 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - db:/var/lib/mysql
+      - ./docker/db:/var/lib/mysql

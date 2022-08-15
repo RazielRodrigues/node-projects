@@ -12,9 +12,13 @@ server.use(express.static('./src/views/assets'));
 
 // Routes
 const ninjaRoutes = require('./src/routes/ninja');
+const villageRoutes = require('./src/routes/village');
+
 const appRoutes = require('./src/routes/app');
 
 server.use('/ninja', ninjaRoutes);
+server.use('/village', villageRoutes);
+
 server.use('/', appRoutes);
 
 server.listen(port, () => {
