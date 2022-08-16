@@ -74,6 +74,13 @@ class NinjaController {
         };
     }
 
+    async hire(req, res) {
+        return {
+            // response: response,
+            message: "Success in hiring!"
+        };
+    }
+
 }
 
 module.exports = new NinjaController();

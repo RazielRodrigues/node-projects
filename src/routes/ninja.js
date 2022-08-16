@@ -38,4 +38,13 @@ router.delete("/", async (req, res) => {
     res.status(200).json(response);
 })
 
+router.post("/hire", async (req, res) => {
+    const response = await NinjaController.hire(req, res);
+
+    if (!response)
+        res.status(500).json(req.original);
+
+    res.status(201).json(response);
+})
+
 module.exports = router;

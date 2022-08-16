@@ -4,14 +4,16 @@ const Village = require('./models/village');
 
 const tableConfig = {
     freezeTableName:true,
-    timestamps: false,
+    timestamps: 0,
 }
 
 class Database {
 
     async syncModels(connection) {
-        connection.define('ninja', Ninja, tableConfig);
-        connection.define('village', Village, tableConfig);
+        const NinjaModel = await connection.define('ninja', Ninja, tableConfig);
+        const VillageModel = await connection.define('village', Village, tableConfig);
+        VillageModel.hasMany(NinjaModel);
+        NinjaModel.belongsTo(VillageModel);
     }
 
     async connection() {
