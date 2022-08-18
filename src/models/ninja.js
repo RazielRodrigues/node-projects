@@ -7,9 +7,6 @@ module.exports = {
     jutsu: {
         type: DataTypes.STRING
     },
-    description: {
-        type: DataTypes.TEXT
-    },
     value: {
         type: DataTypes.INTEGER,
     }

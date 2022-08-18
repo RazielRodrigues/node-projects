@@ -34,6 +34,26 @@ class NinjaController {
         };
     }
 
+    async readDetails(req, res) {
+        const connection = await Database.connection();
+        const NinjaRepository = connection.modelManager.getModel('ninja');
+        const VillageRepository = connection.modelManager.getModel('village');
+
+        const response = await NinjaRepository.findAll(
+            {
+                where: { id: req.query.id },
+                include: [{
+                  model: VillageRepository,
+                }]
+              }
+        )
+
+        return {
+            response: response,
+            message: "Success!"
+        };
+    }
+
     async update(req, res) {
         const connection = await Database.connection();
         const NinjaRepository = connection.modelManager.getModel('ninja');

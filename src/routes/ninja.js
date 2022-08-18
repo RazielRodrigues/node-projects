@@ -47,4 +47,14 @@ router.post("/hire", async (req, res) => {
     res.status(201).json(response);
 })
 
+router.get("/details", async (req, res) => {
+    const response = await NinjaController.readDetails(req, res);
+
+    if (!response)
+        res.status(401).json(req.original);
+
+    res.status(200).json(response);
+})
+
+
 module.exports = router;
