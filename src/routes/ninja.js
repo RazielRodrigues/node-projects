@@ -3,21 +3,11 @@ const router = express.Router();
 const NinjaController = require('./../controllers/ninja')
 
 router.post("/", async (req, res) => {
-    const response = await NinjaController.create(req, res);
-
-    if (!response)
-        res.status(500).json(req.original);
-
-    res.status(201).json(response);
+    return await NinjaController.create(req, res);
 })
 
 router.get("/", async (req, res) => {
-    const response = await NinjaController.read(req, res);
-
-    if (!response)
-        res.status(401).json(req.original);
-
-    res.status(200).json(response);
+    return await NinjaController.read(req, res);
 })
 
 router.put("/", async (req, res) => {

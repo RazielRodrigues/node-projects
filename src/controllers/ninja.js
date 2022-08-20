@@ -1,23 +1,22 @@
 const Database = require('./../database');
-
+const DtoNinja = require('./../dto/ninja');
 
 class NinjaController {
 
     async create(req, res) {
-        const connection = await Database.connection();
-        const NinjaRepository = connection.modelManager.getModel('ninja');
+        try {
+            const connection = await Database.connection();
+            const NinjaRepository = connection.modelManager.getModel('ninja');
+    
+            const dtoNinja = new DtoNinja(req.body);
+    
+            await NinjaRepository.create(dtoNinja)
+    
+            return res.status(200).json('ok');
 
-        if (!req.body) {
-            return {
-                message: "Must pass the body!"
-            };
+        } catch (error) {
+            return res.status(500).json(error.message);
         }
-
-        await NinjaRepository.create(req.body)
-
-        return {
-            message: "Success!"
-        };
     }
 
     async read(req, res) {
