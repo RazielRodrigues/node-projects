@@ -1,21 +1,22 @@
 class PesquisaBinaria {
- 
-    pesquisar(lista, item){
+
+    pesquisar(lista, item) {
 
         let baixo = 0;
         let alto = lista.length - 1;
 
-        while(baixo <= alto){
+        while (baixo <= alto) {
             let meio = (baixo + alto) / 2;
             let chute = lista[meio];
 
-            if(chute == item){
+            if (chute == item) {
                 console.log(`valor encontrado: ${meio}`);
+                return meio;
             }
-            
-            if(chute > item){
+
+            if (chute > item) {
                 alto = meio - 1;
-            }else{
+            } else {
                 baixo = meio + 1;
             }
 
@@ -25,4 +26,4 @@ class PesquisaBinaria {
 
 }
 
-(new PesquisaBinaria).pesquisar([1,2,3], 3);
+(new PesquisaBinaria).pesquisar([1, 2, 3], 3);
