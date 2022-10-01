@@ -4,17 +4,27 @@ class Quicksort {
     * 
      */
     qsort(numeros){
-
+        
         //caso base
         if(numeros.length < 2){
             return numeros;
         }else{
-            const pivo = numeros[0];
-            const menores = numeros.filter( (numero) => { if(numero <= pivo) return numero});
-            const maiores = numeros.filter( (numero) => { if(numero > pivo) return numero});
+
+            let pivo = numeros[0];
+            let menores = numeros.filter( (numero) => { if(numero <= pivo) return numero});
+            let maiores = numeros.filter( (numero) => { if(numero > pivo) return numero});
 
             console.log(`atual: ${numeros}`);
-            return [...this.qsort(menores), ...[pivo], ...this.qsort(maiores)];
+            console.log(`menores: ${menores}`);
+            console.log(`maiores: ${maiores}`);
+            
+//             menores = this.qsort(menores);
+            // maiores = this.qsort(maiores);
+
+            let numerosOrdernados = [...menores, pivo ,...maiores]
+            console.log(`atual 2: ${numerosOrdernados}`);
+
+            return numerosOrdernados;
         }
 
     }
