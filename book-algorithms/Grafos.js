@@ -41,7 +41,7 @@ class Grafos {
 
         let processados = [];
 
-        let nodo = custoBarato(custos);
+        let nodo = this.custoBarato(custos, processados);
 
         while (nodo !== undefined) {
             let custo = custos[nodo];
@@ -55,15 +55,26 @@ class Grafos {
                     pais[n] = nodo;
                 }
                 processados.push(nodo);
-                nodo = custoBarato(custos);
+                nodo = this.custoBarato(custos, processados);
             }
 
         }
 
     }
 
-    custoBarato() {
+    custoBarato(custos, processados) {
+        let baixo = Infinity;
+        let nodoBaixo = undefined;
 
+        for (let nodo in custos) {
+            let custo = custos[nodo];
+            if( custo < baixo && !nodo in processados){
+                baixo = custo;
+                nodoBaixo = nodo;
+            }
+        }
+
+        return nodoBaixo;
     }
 
 }
